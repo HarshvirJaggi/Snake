@@ -19,7 +19,8 @@ class game {
         my_board.set_direction_of_head(movement);
     }
     void increment_game_time(){
-        my_board.increment_time();
+        my_board.handle_snake_movement();
+        my_board.handle_juice();
         my_board.print_board();
         my_board.print_player_info();
     }
