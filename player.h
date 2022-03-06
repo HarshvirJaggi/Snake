@@ -9,6 +9,7 @@
 using namespace std;
 
 enum direction {left, right, up, down};
+const int length = 15;
 //srand(time(NULL));
 
 class player {
@@ -17,8 +18,11 @@ class player {
     public:
     player() {
         //srand(time(NULL));
-        snake_body.push_back(make_pair(make_pair((rand() % 9) + 1,(rand() % 9) + 1), direction::left));
-        length = 1;
+        //snake_body.push_back(make_pair(make_pair((rand() % (length-1)) + 1,(rand() % (length-1)) + 1), direction::left));
+        snake_body.push_back(make_pair(make_pair(10,2), direction::left));
+        snake_body.push_back(make_pair(make_pair(11,2), direction::left));
+        snake_body.push_back(make_pair(make_pair(12,2), direction::left));
+        length = 3;
     }
     int get_x_pos_of_head() { return snake_body.front().first.first;}
     int get_y_pos_of_head() { return snake_body.front().first.second;}
@@ -53,22 +57,31 @@ class player {
             if((*iter).second == direction::left) {
                 (*iter).first.first--;
             }
-            else if ((*iter).first.second == direction::right)
+            else if ((*iter).second == direction::right)
             {
                 (*iter).first.first++;
             }
-            else if ((*iter).first.second == direction::up)
-            {
-                (*iter).first.second++;
-            }
-            else if ((*iter).first.second == direction::down)
+            else if ((*iter).second == direction::up)
             {
                 (*iter).first.second--;
+            }
+            else if ((*iter).second == direction::down)
+            {
+                (*iter).first.second++;
             }
         }
     }
     vector<pair<pair<int, int>, direction>> get_snake_body() {
         return snake_body;
+    }
+    void propagate_snake_behavior() {
+        int i = 0;
+        auto second_el = snake_body.begin() + 1; 
+        for (vector<pair<pair<int, int>, direction>>::iterator iter = snake_body.end(); iter-- != second_el; ){
+            if ((*iter).second != (*prev(iter)).second) {
+                (*iter).second = (*prev(iter)).second;
+            }
+        }
     }
 };
 
@@ -83,8 +96,8 @@ class juice {
         return juice_loc;
     }
     void randomize() {
-        juice_loc.first = (rand() % 9) + 1;
-        juice_loc.second = (rand() % 9) + 1;
+        juice_loc.first = (rand() % (length-1)) + 1;
+        juice_loc.second = (rand() % (length-1)) + 1;
     }
 };
 #endif /* PLAYER_H */

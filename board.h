@@ -7,7 +7,6 @@
 
 using namespace std;
 
-const int length = 10;
 
 class board {
     player snake;
@@ -19,8 +18,8 @@ class board {
         grid[snake.get_y_pos_of_head()][snake.get_x_pos_of_head()] = 1;
     }
     void print_board() {
-        for(int i = 0; i < 10; i++){
-            for(int j = 0; j < 10; j++){
+        for(int i = 0; i < length; i++){
+            for(int j = 0; j < length; j++){
                 grid[i][j] = 0;
             }
         }
@@ -33,8 +32,8 @@ class board {
         pair<int,int> juice_location = snake_juice.get_juice();
         grid[juice_location.second][juice_location.first] = 7; 
 
-        for(int i = 0; i < 10; i++){
-            for(int j = 0; j < 10; j++){
+        for(int i = 0; i < length; i++){
+            for(int j = 0; j < length; j++){
                 cout << grid[i][j] << "  ";
             }
         cout << endl;
@@ -71,6 +70,9 @@ class board {
         else{
             return; 
         }
+    }
+    void propagate_snake_behavior() {
+        snake.propagate_snake_behavior();
     }
         
 };
