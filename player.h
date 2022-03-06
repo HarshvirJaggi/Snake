@@ -41,11 +41,11 @@ class player {
         }
         else if (snake_body.back().second == direction::up)
         {
-            current_end.first.second = current_end.first.second - 1;
+            current_end.first.second = current_end.first.second + 1;
         }
         else if (snake_body.back().second == direction::down)
         {
-            current_end.first.second = current_end.first.second + 1;
+            current_end.first.second = current_end.first.second - 1;
         }
 
         snake_body.push_back(current_end);
