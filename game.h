@@ -23,6 +23,7 @@ class game {
         my_board.handle_juice();
         my_board.print_board();
         my_board.print_player_info();
+        my_board.propagate_snake_behavior();
     }
 };
 
