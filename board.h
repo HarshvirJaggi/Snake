@@ -44,6 +44,16 @@ class board {
         cout << "Snake length is : " << snake.get_length() << endl;
     }
     void set_direction_of_head(direction movement) {
+        int snake_direction = snake.get_snake_head_direction();
+        if (snake_direction == direction::left && movement == direction::right)
+            return;
+        else if (snake_direction == direction::right && movement == direction::left)
+            return;
+        else if (snake_direction == direction::up && movement == direction::down)
+            return;
+        else if (snake_direction == direction::down && movement == direction::up)
+            return;
+        
         snake.set_direction_of_snake_head(movement);
     }
     void handle_snake_movement(){

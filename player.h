@@ -26,6 +26,7 @@ class player {
     }
     int get_x_pos_of_head() { return snake_body.front().first.first;}
     int get_y_pos_of_head() { return snake_body.front().first.second;}
+    int get_snake_head_direction() { return snake_body.front().second;}
     int get_length() { return length;}
     void set_direction_of_snake_head(direction movement) {snake_body.front().second = movement;}
     void eat() {
@@ -41,11 +42,11 @@ class player {
         }
         else if (snake_body.back().second == direction::up)
         {
-            current_end.first.second = current_end.first.second - 1;
+            current_end.first.second = current_end.first.second + 1;
         }
         else if (snake_body.back().second == direction::down)
         {
-            current_end.first.second = current_end.first.second + 1;
+            current_end.first.second = current_end.first.second - 1;
         }
 
         snake_body.push_back(current_end);

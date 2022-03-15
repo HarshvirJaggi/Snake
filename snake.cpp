@@ -8,7 +8,11 @@ int main() {
     test_game.print_game();
     test_game.increment_game_time();
     test_game.increment_game_time();
+    test_game.increment_game_time();
+    test_game.increment_game_time();
+    test_game.increment_game_time();
     test_game.control_player(direction::down);
+    test_game.control_player(direction::up);
     test_game.increment_game_time();
     test_game.increment_game_time();
     test_game.increment_game_time();
