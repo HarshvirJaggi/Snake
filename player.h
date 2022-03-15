@@ -26,6 +26,7 @@ class player {
     }
     int get_x_pos_of_head() { return snake_body.front().first.first;}
     int get_y_pos_of_head() { return snake_body.front().first.second;}
+    int get_snake_head_direction() { return snake_body.front().second;}
     int get_length() { return length;}
     void set_direction_of_snake_head(direction movement) {snake_body.front().second = movement;}
     void eat() {
