@@ -11,7 +11,7 @@ using namespace std;
 class board {
     player snake;
     juice snake_juice;
-    int grid[length][length] = {0}; 
+    char grid[length][length]; 
     
     public:
     board() {
@@ -20,17 +20,17 @@ class board {
     void print_board() {
         for(int i = 0; i < length; i++){
             for(int j = 0; j < length; j++){
-                grid[i][j] = 0;
+                grid[i][j] = '.';
             }
         }
         // Paint snake on grid
         vector<pair<pair<int, int>, direction>> snake_body = snake.get_snake_body();
         for (vector<pair<pair<int, int>, direction>>::iterator iter = snake_body.begin(); iter != snake_body.end(); iter++){
-            grid[(*iter).first.second][(*iter).first.first] = 1;
+            grid[(*iter).first.second][(*iter).first.first] = 'S';
         }
         // Paint juice on grid
         pair<int,int> juice_location = snake_juice.get_juice();
-        grid[juice_location.second][juice_location.first] = 7; 
+        grid[juice_location.second][juice_location.first] = 'X'; 
 
         for(int i = 0; i < length; i++){
             for(int j = 0; j < length; j++){
