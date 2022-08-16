@@ -34,14 +34,14 @@ class board {
 
         for(int i = 0; i < length; i++){
             for(int j = 0; j < length; j++){
-                cout << grid[i][j] << "  ";
+                printw("%c  ", grid[i][j]);
             }
-        cout << endl;
+        printw("\n");
         }
     } 
     void print_player_info() {
-        cout << "Head of Snake at: " << snake.get_x_pos_of_head() + 1 << ", " << snake.get_y_pos_of_head() + 1 << endl;
-        cout << "Snake length is : " << snake.get_length() << endl;
+        printw("Head of Snake at: %d, %d \n", snake.get_x_pos_of_head() + 1, snake.get_y_pos_of_head() + 1);
+        printw("Snake length is : %d \n", snake.get_length());
     }
     void set_direction_of_head(direction movement) {
         int snake_direction = snake.get_snake_head_direction();
