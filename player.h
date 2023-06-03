@@ -3,13 +3,15 @@
 
 #include <stdlib.h>
 #include <cstdlib>
+#include <string>
 #include <time.h>
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 
 enum direction {left, right, up, down};
-const int length = 15;
+const int board_size = 25;
 //srand(time(NULL));
 
 class player {
@@ -72,6 +74,30 @@ class player {
             }
         }
     }
+    bool head_out_of_bounds() {
+        auto head = snake_body.front();
+
+
+        if (head.first.first < 0 || head.first.first > board_size - 1)
+            return true;
+        if (head.first.second < 0 || head.first.second > board_size - 1)
+            return true;
+        
+        return false;
+    }
+    bool body_overlapping() {
+        unordered_map<string, int> coordinate_map;
+        for (auto snake_node : snake_body){
+            string position_as_string = to_string(snake_node.first.first) + "," + to_string(snake_node.first.second);
+            if (coordinate_map.find(position_as_string) == coordinate_map.end()) {
+                coordinate_map[position_as_string] = 1;
+            } else {
+                return true;
+            }
+        }
+        return false;
+        
+    }
     vector<pair<pair<int, int>, direction>> get_snake_body() {
         return snake_body;
     }
@@ -97,8 +123,8 @@ class juice {
         return juice_loc;
     }
     void randomize() {
-        juice_loc.first = (rand() % (length-1)) + 1;
-        juice_loc.second = (rand() % (length-1)) + 1;
+        juice_loc.first = (rand() % (board_size-1)) + 1;
+        juice_loc.second = (rand() % (board_size-1)) + 1;
     }
 };
 #endif /* PLAYER_H */

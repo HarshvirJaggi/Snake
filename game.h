@@ -25,6 +25,9 @@ class game {
         my_board.print_player_info();
         my_board.propagate_snake_behavior();
     }
+    bool is_game_over(){
+        return my_board.game_over;
+    }
 };
 
 #endif /* GAME_H */
