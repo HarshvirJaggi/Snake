@@ -8,11 +8,6 @@
 
 using namespace std;
 
-#define KEY_UP    72
-#define KEY_LEFT  75
-#define KEY_RIGHT 77
-#define KEY_DOWN  80
-
 char getch() {
         char buf = 0;
         struct termios old = {0};
@@ -74,7 +69,7 @@ int main() {
         {
             test_game.control_player(direction::left);
         }
-        else if (input == 's' || input == KEY_DOWN)
+        else if (input == 's')
         {
             test_game.control_player(direction::down);
         }
