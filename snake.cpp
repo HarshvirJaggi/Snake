@@ -12,6 +12,8 @@ int main() {
     {
         cout << "\033[2J\033[1;1H";
         test_game.increment_game_time();
+        if (test_game.is_game_over() == true)
+            return 0;
         cin >> input;
         if (input == 'w'){
             test_game.control_player(direction::up);
