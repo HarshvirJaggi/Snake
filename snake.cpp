@@ -47,7 +47,7 @@ int main() {
         if (test_game.is_game_over() == true)
             return 0;
 
-        sleep_for(nanoseconds(800000000));
+        sleep_for(nanoseconds(200000000));
         input = getch();
         if (input == '\033') { // if the first value is esc
             getch(); // skip the [
