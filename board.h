@@ -66,7 +66,7 @@ class board {
     }
     void handle_snake_movement(){
         snake.move();
-        if (snake.body_overlapping() == true || snake.head_out_of_bounds() == true)
+        if (snake.body_overlapping() == true)
             game_over = true;
     }
     void handle_juice() {

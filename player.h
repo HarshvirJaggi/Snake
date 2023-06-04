@@ -74,17 +74,6 @@ class player {
             }
         }
     }
-    bool head_out_of_bounds() {
-        auto head = snake_body.front();
-
-
-        if (head.first.first < 0 || head.first.first > board_size - 1)
-            return true;
-        if (head.first.second < 0 || head.first.second > board_size - 1)
-            return true;
-        
-        return false;
-    }
     bool body_overlapping() {
         unordered_map<string, int> coordinate_map;
         for (auto snake_node : snake_body){
