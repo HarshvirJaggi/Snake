@@ -59,18 +59,26 @@ class player {
             
             if((*iter).second == direction::left) {
                 (*iter).first.first--;
+                if ((*iter).first.first < 0)
+                    (*iter).first.first = (*iter).first.first + board_size;
             }
             else if ((*iter).second == direction::right)
             {
                 (*iter).first.first++;
+                if ((*iter).first.first > board_size-1)
+                    (*iter).first.first = 0;
             }
             else if ((*iter).second == direction::up)
             {
                 (*iter).first.second--;
+                if ((*iter).first.second < 0)
+                    (*iter).first.second = (*iter).first.second + board_size;
             }
             else if ((*iter).second == direction::down)
             {
                 (*iter).first.second++;
+                if ((*iter).first.second > board_size-1)
+                    (*iter).first.second = 0;
             }
         }
     }
