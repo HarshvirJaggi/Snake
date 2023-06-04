@@ -59,31 +59,28 @@ class player {
             
             if((*iter).second == direction::left) {
                 (*iter).first.first--;
+                if ((*iter).first.first < 0)
+                    (*iter).first.first = (*iter).first.first + board_size;
             }
             else if ((*iter).second == direction::right)
             {
                 (*iter).first.first++;
+                if ((*iter).first.first > board_size-1)
+                    (*iter).first.first = 0;
             }
             else if ((*iter).second == direction::up)
             {
                 (*iter).first.second--;
+                if ((*iter).first.second < 0)
+                    (*iter).first.second = (*iter).first.second + board_size;
             }
             else if ((*iter).second == direction::down)
             {
                 (*iter).first.second++;
+                if ((*iter).first.second > board_size-1)
+                    (*iter).first.second = 0;
             }
         }
-    }
-    bool head_out_of_bounds() {
-        auto head = snake_body.front();
-
-
-        if (head.first.first < 0 || head.first.first > board_size - 1)
-            return true;
-        if (head.first.second < 0 || head.first.second > board_size - 1)
-            return true;
-        
-        return false;
     }
     bool body_overlapping() {
         unordered_map<string, int> coordinate_map;
